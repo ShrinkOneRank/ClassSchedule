@@ -1,0 +1,1325 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+  background: #f7f4ee;
+  color: #1f2937;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  padding-bottom: 76px;
+  background:
+    linear-gradient(180deg, #eef0fb 0%, #dbe8f7 58%, #c7def4 100%);
+}
+
+button,
+select,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.shell {
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.appShell {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.compactHeader h1 {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.compactHeader p {
+  margin: 6px 0 0;
+  color: #475569;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.quickActions {
+  display: flex;
+  gap: 12px;
+}
+
+.iconButton {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.68);
+  color: #111827;
+  font-size: 18px;
+  font-weight: 900;
+  box-shadow: 0 8px 24px rgba(30, 41, 59, 0.08);
+}
+
+.bottomNav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  padding: 8px max(12px, env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-right));
+  border-top: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+}
+
+.bottomNav button {
+  min-height: 44px;
+  border: 1px solid #dbe3ee;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #475569;
+  font-weight: 800;
+}
+
+.bottomNav button.active {
+  border-color: #1f2937;
+  background: #1f2937;
+  color: #ffffff;
+}
+
+.displayControls,
+.setupFields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.displayControls label,
+.setupFields label,
+.majorField {
+  display: grid;
+  gap: 6px;
+}
+
+.displayControls span,
+.setupFields span,
+.majorField > span {
+  color: #475569;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.majorDropdown {
+  position: relative;
+}
+
+.majorDropdown summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0 10px;
+  background: white;
+  color: #1f2937;
+  cursor: pointer;
+  list-style: none;
+}
+
+.majorDropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.majorDropdown summary::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #64748b;
+  border-bottom: 2px solid #64748b;
+  transform: rotate(45deg) translateY(-2px);
+}
+
+.majorDropdown[open] summary::after {
+  transform: rotate(225deg) translateY(-2px);
+}
+
+.majorMenu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 25;
+  display: grid;
+  gap: 4px;
+  margin-top: 6px;
+  max-height: 260px;
+  overflow: auto;
+  border: 1px solid #dbe3ee;
+  border-radius: 8px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.16);
+}
+
+.majorMenu button {
+  min-height: 38px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 10px;
+  background: transparent;
+  color: #334155;
+  text-align: left;
+}
+
+.majorMenu button.active,
+.majorMenu button:hover {
+  background: #eef2f7;
+  color: #111827;
+  font-weight: 800;
+}
+
+.inlineCheck {
+  align-content: end;
+  grid-template-columns: 18px auto;
+  align-items: center;
+  min-height: 58px;
+  color: #334155;
+  font-weight: 800;
+}
+
+.scheduleList {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.scheduleCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.scheduleCard.active {
+  border-color: #f59e0b;
+  background: #fff7ed;
+}
+
+.scheduleCard div:first-child {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.scheduleCard strong,
+.scheduleCard span {
+  overflow-wrap: anywhere;
+}
+
+.scheduleCard span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.cardActions,
+.setupActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.setupPanel {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.setupHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.swipeHint {
+  margin: 8px 0 0;
+  color: #64748b;
+  font-size: 12px;
+  text-align: center;
+}
+
+.topbar,
+.scheduleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.topbar {
+  min-height: 80px;
+  margin-bottom: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+h1,
+h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+.fileButton {
+  position: relative;
+  display: inline-grid;
+  min-width: 120px;
+  height: 44px;
+  place-items: center;
+  border-radius: 8px;
+  background: #1f2937;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.topActions,
+.panelActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.ghostButton {
+  min-height: 40px;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-weight: 700;
+}
+
+.primaryButton {
+  border: 0;
+  background: #1f2937;
+  color: white;
+}
+
+.ghostButton {
+  border: 1px solid #cbd5e1;
+  background: white;
+  color: #334155;
+}
+
+.ghostButton.danger {
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.fileButton input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.csvNotice {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) 1fr auto;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 14px;
+  border: 1px solid #dbe3ee;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.csvNotice h2 {
+  font-size: 18px;
+}
+
+.csvNoticeBody {
+  display: grid;
+  gap: 8px;
+}
+
+.csvNoticeBody p {
+  margin: 0;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.downloadLink {
+  display: inline-grid;
+  min-height: 40px;
+  place-items: center;
+  border-radius: 8px;
+  padding: 0 12px;
+  background: #1f2937;
+  color: white;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.controlPanel {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.panelBlock {
+  display: grid;
+  gap: 8px;
+}
+
+.fieldLabel {
+  margin: 0;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+select {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0 10px;
+  background: white;
+  color: #1f2937;
+}
+
+.textInput {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0 10px;
+  background: white;
+  color: #1f2937;
+}
+
+.toggleRow {
+  display: grid;
+  gap: 8px;
+  color: #334155;
+  font-size: 14px;
+}
+
+.toggleRow label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.summaryGrid div {
+  min-height: 68px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #eef2f7;
+}
+
+.summaryGrid strong,
+.summaryGrid span {
+  display: block;
+}
+
+.summaryGrid strong {
+  font-size: 20px;
+}
+
+.summaryGrid span,
+.muted {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.muted {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.saveStatus {
+  margin: 0;
+  color: #0f766e;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.scheduleArea {
+  min-width: 0;
+}
+
+.scheduleHeader {
+  min-height: 56px;
+  margin-bottom: 12px;
+}
+
+.wakeupBoard {
+  display: grid;
+  grid-template-columns: 42px repeat(var(--day-count), minmax(0, 1fr));
+  grid-template-rows: 52px repeat(10, 58px);
+  gap: 0;
+  position: relative;
+  min-width: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  touch-action: pan-y;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.32) 0 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0 1px, transparent 1px);
+  background-size: calc((100% - 42px) / var(--day-count)) 58px, 100% 58px;
+  background-position: 42px 52px, 0 52px;
+}
+
+.boardCorner {
+  display: grid;
+  place-items: center;
+  color: #111827;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.boardDay {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-width: 0;
+  color: rgba(51, 65, 85, 0.42);
+}
+
+.boardDay strong {
+  font-size: 17px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.boardDay span {
+  margin-top: 7px;
+  font-size: 15px;
+}
+
+.timeHead {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  padding-top: 4px;
+  color: #111827;
+}
+
+.timeHead strong {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.timeHead span {
+  color: #475569;
+  font-size: 10px;
+  line-height: 1.08;
+}
+
+.emptyBlock {
+  z-index: 1;
+  border: 0;
+  background: transparent;
+}
+
+.courseBlock {
+  z-index: 2;
+  display: grid;
+  align-content: start;
+  gap: 3px;
+  min-width: 0;
+  margin: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.54);
+  border-radius: 8px;
+  padding: 6px 5px;
+  color: white;
+  text-align: left;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.38), 0 8px 18px rgba(30, 41, 59, 0.1);
+}
+
+.courseBlock strong {
+  font-size: 14px;
+  line-height: 1.06;
+  overflow-wrap: anywhere;
+}
+
+.courseBlock span,
+.courseBlock small {
+  font-size: 11px;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+
+.courseTone1 { background: linear-gradient(180deg, #ef7195, #df5f86); }
+.courseTone2 { background: linear-gradient(180deg, #b9aaf0, #a397e4); }
+.courseTone3 { background: linear-gradient(180deg, #62d8c6, #42c3b1); }
+.courseTone4 { background: linear-gradient(180deg, #77aaf1, #5f93e6); }
+.courseTone5 { background: linear-gradient(180deg, #f0a66c, #e58d51); }
+.courseTone6 { background: linear-gradient(180deg, #8fcf7a, #72ba61); }
+
+.conflictBlock {
+  background: linear-gradient(180deg, #ef4444, #dc2626);
+}
+
+.scheduleGrid {
+  display: grid;
+  grid-template-columns: 48px repeat(var(--day-count), minmax(0, 1fr));
+  border: 1px solid #d6dde8;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  touch-action: pan-y;
+}
+
+.scheduleGrid .corner,
+.scheduleGrid .dayHead,
+.scheduleGrid .slotHead,
+.scheduleGrid .cell {
+  min-width: 0;
+  min-height: 88px;
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.scheduleGrid .corner,
+.scheduleGrid .dayHead,
+.scheduleGrid .slotHead {
+  display: grid;
+  place-items: center;
+  min-height: 34px;
+  padding: 2px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.scheduleGrid .slotHead {
+  min-height: 88px;
+  font-size: 11px;
+}
+
+.scheduleGrid .cell {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  padding: 4px;
+  background: white;
+}
+
+.scheduleGrid .course {
+  min-height: 60px;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.scheduleGrid .course strong {
+  font-size: 12px;
+  line-height: 1.18;
+}
+
+.scheduleGrid .course span,
+.scheduleGrid .course small {
+  font-size: 10px;
+  line-height: 1.18;
+}
+
+.todayColumn {
+  color: #111827 !important;
+}
+
+.todayCell {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.82), 0 0 0 3px rgba(245, 158, 11, 0.34);
+}
+
+.coursePicker {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.pickerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.searchInput {
+  width: min(320px, 100%);
+  height: 40px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0 10px;
+  background: white;
+  color: #1f2937;
+}
+
+.courseList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  max-height: 340px;
+  overflow: auto;
+}
+
+.courseOption {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 8px;
+  min-height: 116px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+}
+
+.courseOption.selected {
+  border-color: #f59e0b;
+  background: #fff7ed;
+}
+
+.courseOption.conflict {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.courseOption input {
+  margin-top: 2px;
+}
+
+.courseOption span {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.courseOption strong,
+.courseOption small {
+  overflow-wrap: anywhere;
+}
+
+.courseOption small {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.courseOption em {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 2px 7px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.conflictPanel {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 14px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fff7f7;
+}
+
+.conflictPanel ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.conflictPanel li {
+  display: grid;
+  gap: 3px;
+  padding: 8px;
+  border-radius: 8px;
+  background: white;
+}
+
+.conflictPanel strong {
+  color: #991b1b;
+  font-size: 13px;
+}
+
+.conflictPanel span {
+  color: #475569;
+  font-size: 13px;
+}
+
+.scheduleHeader p:last-child {
+  margin: 0;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 70px repeat(var(--day-count), minmax(118px, 1fr));
+  border: 1px solid #d6dde8;
+  border-radius: 8px;
+  overflow: auto;
+  background: white;
+}
+
+.corner,
+.dayHead,
+.slotHead,
+.cell {
+  min-height: 118px;
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.corner,
+.dayHead,
+.slotHead {
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 800;
+}
+
+.slotHead {
+  min-height: 118px;
+}
+
+.cell {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  padding: 8px;
+  background: #ffffff;
+}
+
+.cell.hasConflict {
+  background: #fff1f2;
+  box-shadow: inset 0 0 0 2px #fecaca;
+}
+
+.conflictCellButton {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  min-height: 88px;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  padding: 10px;
+  background: #ffffff;
+  color: #991b1b;
+  text-align: left;
+}
+
+.conflictCellButton strong {
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.conflictCellButton span {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 2px 7px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.conflictCellButton small {
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.cell.empty {
+  padding: 0;
+  background: repeating-linear-gradient(135deg, #fff, #fff 10px, #f8fafc 10px, #f8fafc 20px);
+}
+
+.emptyCellButton {
+  width: 100%;
+  height: 100%;
+  min-height: 118px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.scheduleGrid .emptyCellButton {
+  min-height: 100%;
+}
+
+.course {
+  display: grid;
+  gap: 3px;
+  min-height: 74px;
+  padding: 8px;
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+  background: #fff7ed;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.16);
+}
+
+.courseButton {
+  width: 100%;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  text-align: left;
+}
+
+.hasConflict .course {
+  border-left-color: #dc2626;
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(220, 38, 38, 0.18);
+}
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(15, 23, 42, 0.42);
+}
+
+.conflictModal {
+  display: grid;
+  gap: 14px;
+  width: min(560px, 100%);
+  max-height: min(720px, calc(100vh - 36px));
+  overflow: auto;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 16px;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.28);
+}
+
+.modalHeader {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modalClose {
+  min-height: 36px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0 12px;
+  background: white;
+  color: #334155;
+  font-weight: 800;
+}
+
+.modalCourseList {
+  display: grid;
+  gap: 10px;
+}
+
+.modalCourse {
+  display: grid;
+  gap: 5px;
+  border-left: 4px solid #dc2626;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff7f7;
+  box-shadow: inset 0 0 0 1px rgba(220, 38, 38, 0.14);
+}
+
+.modalCourse:nth-child(2n) {
+  border-left-color: #2563eb;
+  background: #eff6ff;
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.14);
+}
+
+.modalCourse:nth-child(3n) {
+  border-left-color: #059669;
+  background: #ecfdf5;
+  box-shadow: inset 0 0 0 1px rgba(5, 150, 105, 0.14);
+}
+
+.modalCourse strong {
+  color: #1f2937;
+}
+
+.modalCourse span,
+.modalCourse small {
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.editForm {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.editForm label {
+  display: grid;
+  gap: 6px;
+}
+
+.editForm label span {
+  color: #475569;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.customCourseForm {
+  border: 1px solid #e5e7eb;
+  background: white;
+}
+
+.modalActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.course:nth-child(2n) {
+  border-left-color: #2563eb;
+  background: #eff6ff;
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.16);
+}
+
+.course:nth-child(3n) {
+  border-left-color: #059669;
+  background: #ecfdf5;
+  box-shadow: inset 0 0 0 1px rgba(5, 150, 105, 0.16);
+}
+
+.course strong {
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.course span,
+.course small {
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.dense .corner,
+.dense .dayHead {
+  min-height: 36px;
+}
+
+.dense .slotHead,
+.dense .cell {
+  min-height: 86px;
+}
+
+.dense .emptyCellButton {
+  min-height: 86px;
+}
+
+.dense .course {
+  min-height: auto;
+  padding: 6px;
+}
+
+.emptyState,
+.errorBox {
+  display: grid;
+  gap: 14px;
+  min-height: 360px;
+  align-content: center;
+  justify-items: center;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.68);
+  text-align: center;
+  padding: 24px;
+}
+
+.emptyState p,
+.errorBox p {
+  max-width: 520px;
+  margin: 0;
+  color: #64748b;
+}
+
+.csvHint {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #eef2f7;
+  text-align: left;
+}
+
+code {
+  color: #334155;
+  overflow-wrap: anywhere;
+}
+
+.errorBox button {
+  min-width: 120px;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: #1f2937;
+  color: white;
+  font-weight: 700;
+}
+
+@media (max-width: 860px) {
+  .shell,
+  .appShell {
+    padding: 10px;
+  }
+
+  .topbar {
+    align-items: stretch;
+  }
+
+  .topActions {
+    justify-content: flex-start;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .csvNotice {
+    grid-template-columns: 1fr;
+  }
+
+  .controlPanel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .summaryGrid,
+  .toggleRow,
+  .scheduleSwitcher,
+  .controlPanel .panelBlock:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .grid {
+    grid-template-columns: 58px repeat(var(--day-count), minmax(104px, 1fr));
+  }
+
+  .scheduleGrid {
+    grid-template-columns: 34px repeat(var(--day-count), minmax(0, 1fr));
+  }
+
+  .wakeupBoard {
+    grid-template-columns: 31px repeat(var(--day-count), minmax(0, 1fr));
+    grid-template-rows: 46px repeat(10, minmax(49px, calc((100vh - 230px) / 10)));
+    background-size: calc((100% - 31px) / var(--day-count)) calc((100vh - 230px) / 10), 100% calc((100vh - 230px) / 10);
+    background-position: 31px 46px, 0 46px;
+  }
+
+  .boardCorner {
+    font-size: 12px;
+  }
+
+  .boardDay strong {
+    font-size: 13px;
+  }
+
+  .boardDay span {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+
+  .timeHead strong {
+    font-size: 16px;
+  }
+
+  .timeHead span {
+    font-size: 8px;
+  }
+
+  .courseBlock {
+    margin: 2px;
+    padding: 4px 3px;
+    border-radius: 7px;
+  }
+
+  .courseBlock strong {
+    font-size: 11px;
+  }
+
+  .courseBlock span,
+  .courseBlock small {
+    font-size: 8px;
+  }
+
+  .scheduleGrid .corner,
+  .scheduleGrid .dayHead {
+    min-height: 28px;
+    font-size: 10px;
+  }
+
+  .scheduleGrid .slotHead,
+  .scheduleGrid .cell {
+    min-height: 70px;
+  }
+
+  .scheduleGrid .slotHead {
+    font-size: 9px;
+  }
+
+  .scheduleGrid .cell {
+    padding: 2px;
+  }
+
+  .scheduleGrid .course {
+    min-height: 48px;
+    padding: 3px;
+    border-left-width: 3px;
+  }
+
+  .scheduleGrid .course strong {
+    font-size: 10px;
+  }
+
+  .scheduleGrid .course span {
+    display: none;
+  }
+
+  .scheduleGrid .course small {
+    font-size: 8px;
+  }
+
+  .displayControls,
+  .setupFields {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .inlineCheck {
+    min-height: auto;
+  }
+
+  .pickerHeader {
+    display: grid;
+  }
+}
+
+@media (max-width: 560px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 19px;
+  }
+
+  .topbar,
+  .scheduleHeader,
+  .pageHeader,
+  .setupHeader,
+  .scheduleCard {
+    display: grid;
+  }
+
+  .fileButton {
+    width: 100%;
+  }
+
+  .downloadLink {
+    width: 100%;
+  }
+
+  .controlPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .summaryGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .displayControls,
+  .setupFields {
+    grid-template-columns: 1fr;
+  }
+}

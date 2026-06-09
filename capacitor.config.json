@@ -1,0 +1,6 @@
+{
+  "appId": "cn.local.course.timetable",
+  "appName": "课程表",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
