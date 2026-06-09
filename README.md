@@ -13,6 +13,10 @@ npm.cmd run dev
 
 如果要用手机测试，手机和电脑需要在同一局域网内，然后打开 Vite 输出的 `Network` 地址。
 
+## 手机安装
+
+下载文件 ClassSchedule.apk 安装即可。
+
 ## 使用流程
 
 1. 第一次打开时导入 `.xlsx` 或 `.csv`。
